@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JeLewine</title>
+    <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-box{
+            width: 250px;
+            height: 250px;
+            margin:200px auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="panel panel-default login-box">
+        <div class="panel-heading">登陆</div>
+        <div class="panel-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="">用户名</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="">密码</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <button class="btn btn-default">登陆</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <script src="../assets/jquery.js"></script>
+    <script>
+        $(".btn").click(function(){
+            $.ajax({
+                url:"",
+                async:false,
+                success:function(){
+                    
+                },
+                error:function(){
+                    
+                }
+            })
+        })
+    </script>
+</body>
+</html>

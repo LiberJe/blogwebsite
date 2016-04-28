@@ -20,12 +20,12 @@ function CreateArticle(articleData){
     this.img=articleData.img;
     this.description=articleData.description;
     
-    $("<div class='panel panel-default'><div class='panel-body'></div></div>").appendTo($(".article"));
-    $("<div class='media'><div class='media-left'></div><div class='media-body'></div></div>").appendTo($(".article .panel-body:last"));
-    $("<a href='#'><img src=../"+this.img+" width='100px' height='100px' /></a>").appendTo($(".article .media-left:last"))
-    $("<div class='article-header'><h4>"+this.title+"</h4></div>").appendTo($(".article .media-body:last"));
-    $("<ol class='article-bread breadcrumb'><li>"+this.type+"</li><li>"+this.date+"</li></ol>").appendTo($(".article .media-body:last"));
-    $("<div class='article-description'>"+this.description+"</div>").appendTo($(".article .media-body:last"));
+    $("<div class='panel panel-default'><div class='panel-body'></div></div>").appendTo($(".article .con-left"));
+    $("<div class='media'><div class='media-left'></div><div class='media-body'></div></div>").appendTo($(".article .con-left .panel-body:last"));
+    $("<a href='#'><img src=../"+this.img+" width='100px' height='100px' /></a>").appendTo($(".article .con-left .media-left:last"))
+    $("<div class='article-header'><h4>"+this.title+"</h4></div>").appendTo($(".article .con-left .media-body:last"));
+    $("<ol class='article-bread breadcrumb'><li>"+this.type+"</li><li>"+this.date+"</li></ol>").appendTo($(".article .con-left .media-body:last"));
+    $("<div class='article-description'>"+this.description+"</div>").appendTo($(".article .con-left .media-body:last"));
 }
 
 function getArticle(){
