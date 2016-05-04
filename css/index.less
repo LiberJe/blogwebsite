@@ -3,19 +3,143 @@
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+a:focus{
+    outline: none;
+}
+a:link{
+    text-decoration: none;
+}
 
-.section{
-    padding-top:100px; 
+.s1{
     background-color: #FF6666;
     
-    .s1-header{
-        width: 200px;
-        height: 200px;
-        
-        
-        img{
-            border-radius: 50%;
-        }    
+    .s1-box{
+        padding-top: 220px;
     }
 }
 
+
+.s2{
+    background-color: #99CC99;
+    
+    .s2-header{
+        margin-top: 100px;
+    }
+    .s2-content{
+        div{
+            padding: 0;
+            
+            .progress-box{
+                width: 90%;
+                height: 30px;
+                margin-bottom: 40px;
+                border-radius: 5px;
+                background-color: #CCCCCC;
+                
+                .pg{
+                    width: 85%;
+                    height: 30px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    background-color: #FFCC99;
+                    
+                    .pg-title{
+                        margin-left: 15px;
+                        line-height: 30px;
+                        font-weight: bold;
+                    }
+                    .pg-pg{
+                        margin-right: 15px;
+                        line-height: 30px;
+                        font-weight: bold;
+                    }
+                }
+                .pg-2{
+                    width: 80%;
+                }
+                .pg-3{
+                    width: 70%;
+                }
+                .pg-4{
+                    width: 60%;
+                }
+                .pg-5{
+                    width: 45%;
+                }
+                //此处可用less循环
+            }
+        }
+    }
+}
+
+
+.s3{
+    background-color: #3399CC;
+    
+    .s3-header{
+        margin-top: 100px;
+    }
+}
+
+.s4{
+    background-color: #66CCCC;
+    
+    .s4-header{
+        margin-top:100px;
+    }
+    
+    .s4-content{
+        .form-group{
+            padding: 0;
+            margin-top: 20px;
+            
+            input{
+                margin-bottom: 20px;
+                width: 50%;
+            }
+            textarea{
+                resize: none;
+            }
+            button{
+                margin-top: 20px;
+            }
+        }
+        
+        .media{
+            
+            .img-box{
+                width: 74px;
+                height: 74px;
+                border-radius: 50%;
+                border: 3px solid white;
+                
+                img{
+                    margin: 2px 2px;
+                }
+            }
+            
+            .ib2 img{
+                margin: 7px 7px;                    
+            }
+            
+            .media-body{
+                padding-top: 25px;
+                
+                a{
+                    color: black;
+                }
+                a:hover{
+                    color: white;
+                }
+            }
+        }
+        
+    }
+}
