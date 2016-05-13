@@ -1,0 +1,13 @@
+myadmin.directive("newarticle",["md",function(md){
+    return{
+        restrict:"A",
+        link:function(scope,element,attr){
+            element.click(function(){
+                if(element.text()=="新文章"){
+                    angular.element("#modify-article").modal();
+                    md.init();
+                }
+            })
+        }
+    }
+}])

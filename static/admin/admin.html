@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>JeLewine</title>
-    <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="mstyle.less" type="text/less">
+    <link rel="stylesheet" href="./static/assets/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./static/admin/mstyle.less" type="text/less">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
 
 </head>
@@ -12,75 +12,114 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">JeLewine</a>
+                <a class="navbar-brand" href="index">JeLewine</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="home"><a href="home.html">首页</a></li>
-                    <li class="code"><a href="code.html">编程</a></li>
-                    <li class="talk"><a href="talk.html">杂谈</a></li>
-                    <li class="translate"><a href="translate.html">翻译</a></li>
+                    <li class="home"><a href="home">首页</a></li>
+                    <li class="code"><a href="code">编程</a></li>
+                    <li class="talk"><a href="talk">杂谈</a></li>
+                    <li class="translate"><a href="translate">翻译</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <div class="content container" ng-app="myadmin" ng-controller="mycontroller">
-        <div class="col-xs-3 list-group">
-            <a href="#" class="list-group-item" ng-repeat="listname in list" ng-click="changeitem($index)">{{listname}}</a>
-        </div>
-        <div class="col-xs-9">
-            <div class="panel panel-default" >
-                <div class="panel-heading">{{citem}}</div>
-                <div class="panel-body" >
-                    <table class="table table-hover table-bordered" ng-if="panelbody">
-                        <tr>
-                            <th>id</th>
-                            <th>title</th>
-                            <th>date</th>
-                            <th>description</th>
-                            <th>type</th>
-                            <th>action</th>
-                        </tr>
-                        <tr ng-repeat="item in listdata">
-                            <td>{{item.id}}</td>
-                            <td>{{item.title}}</td>
-                            <td>{{item.date}}</td>
-                            <td>{{item.description}}</td>
-                            <td>{{item.type}}</td>
-                            <td>
-                                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="">修改</button>
-                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="">删除</button>
-                            </td>
-                        </tr>
-                    </table>
-                    
-                    <div class="editor" ng-show="!panelbody">
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                        <select name="" id="" class="form-control" ng-model="newpappertype">
-                            <option value="" ng-repeat="item in selectlist">{{item}}</option>
-                        </select>
-                        <button class="btn btn-success md-btn" ng-click="postval()">确认</button>
+    <div class="content container" ng-app="myadmin" >
+        <div class="container main-admin" ng-controller="adminctrl">
+            <div class="col-xs-3 list-group">
+                <a href="#" class="list-group-item" ng-repeat="listname in list" ng-click="" newarticle>{{listname}}</a>
+            </div>
+            <div class="col-xs-9">
+                <div class="panel panel-default" >
+                    <div class="panel-heading">{{citem}}</div>
+                    <div class="panel-body" >
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th>id</th>
+                                <th>title</th>
+                                <th>date</th>
+                                <th>description</th>
+                                <th>type</th>
+                                <th>action</th>
+                            </tr>
+                            <tr ng-repeat="item in listdata">
+                                <td>{{item.id}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.type}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modify-article" ng-click="selectArticle($index)">修改</button>
+                                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-article" ng-click="selectArticle($index)">删除</button>
+                                </td>
+                            </tr>
+                        </table>
+                        
                     </div>
-                    
                 </div>
             </div>
         </div>
+        
+        <!--修改modal-->
+        <div class="modal fade" id="modify-article" ng-controller="modifyctrl">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">修改文章</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="" id="" cols="30" rows="30">{{listdata.group[sart.id].content}}</textarea>
+                        <select name="" id="" class="form-control" ng-model="newpappertype">
+                            <option value="" ng-repeat="item in selectlist">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="cons()">保存</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        <!--删除modal-->
+        <div class="modal fade" id="delete-article">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">警告</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>你确定要删除吗？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+                        <button type="button" class="btn btn-primary">是</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
     </div>
     
     
     
     
-    <script src="../assets/jquery.js"></script>
-    <script src="../assets/bootstrap/dist/js/bootstrap.js"></script>
+    
+    
+    
+    <script src="./static/assets/jquery.js"></script>
+    <script src="./static/assets/bootstrap/dist/js/bootstrap.js"></script>
     <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
-    <script src="../assets/less.js"></script>
+    <script src="./static/assets/less.js"></script>
     <script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>
     <script src="//cdn.jsdelivr.net/editor/0.1.0/marked.js"></script>
     
-    <script src="main-m.js"></script>
-    <script src="service.js"></script>
-    <script src="directive.js"></script>
-    <script src="controller.js"></script>
+    <script src="./static/admin/main-m.js"></script>
+    <script src="./static/admin/service.js"></script>
+    <script src="./static/admin/directive.js"></script>
+    <script src="./static/admin/controller.js"></script>
 </body>
 </html>

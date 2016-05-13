@@ -21,3 +21,7 @@ myadmin.service("md",[function(){
         return that.editor.codemirror.getValue();
     }
 }])
+
+myadmin.service("sArticle",[function(){
+    this.id=0;
+}])
