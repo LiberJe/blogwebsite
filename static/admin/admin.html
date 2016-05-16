@@ -84,7 +84,7 @@
         </div><!-- /.modal -->
         
         <!--删除modal-->
-        <div class="modal fade" id="delete-article">
+        <div class="modal fade" id="delete-article" ng-controller="delctrl">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
-                        <button type="button" class="btn btn-primary">是</button>
+                        <button type="button" class="btn btn-primary" ng-click="del()">是</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

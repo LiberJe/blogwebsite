@@ -2,7 +2,8 @@ myadmin.service("listdata",["$http","$q",function($http,$q){
     this.group=[];
     var that=this;
     var deffer=$q.defer();
-    $http.get("../test.json").success(function(data){
+    $http.get("getArticlesList").success(function(data){
+        // console.log(data);
         that.group=data;
         deffer.resolve(data);
     }).error(function(){
@@ -10,6 +11,42 @@ myadmin.service("listdata",["$http","$q",function($http,$q){
     })
     this.promise=deffer.promise;
 }])
+
+myadmin.service("queryall",["$http","$q",function($http,$q){
+    this.group=[];
+    var that=this;
+    this.getdata=function() {
+        var deffer=$q.defer();
+        $http.get("getArticlesList").success(function(data){
+            console.log(data);
+            that.group=data;
+            deffer.resolve(data);
+        })
+        that.promise=deffer.promise;
+    }
+    
+}])
+
+myadmin.service("deleteData",["$http","$q",function($http,$q){
+    this.check=false;
+    var that=this;
+    this.del=function(id) {
+        var deffer=$q.defer();
+        $http({
+            url:"delData",
+            method:"POST",
+            data:{
+                "id":id
+            }
+        }).success(function(data){
+            console.log(data);
+            that.check=data.check;
+            deffer.resolve(data);
+        })
+        that.promise=deffer.promise;
+    }
+}])
+
 
 myadmin.service("md",[function(){
     this.editor=new Editor();
