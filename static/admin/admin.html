@@ -43,15 +43,15 @@
                                 <th>type</th>
                                 <th>action</th>
                             </tr>
-                            <tr ng-repeat="item in listdata">
+                            <tr ng-repeat="item in listdata.group">
                                 <td>{{item.id}}</td>
                                 <td>{{item.title}}</td>
                                 <td>{{item.date}}</td>
                                 <td>{{item.description}}</td>
                                 <td>{{item.type}}</td>
                                 <td>
-                                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modify-article" ng-click="selectArticle($index)">修改</button>
-                                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-article" ng-click="selectArticle($index)">删除</button>
+                                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modify-article" ng-click="selectArticle(item)">修改</button>
+                                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-article" ng-click="selectArticle(item)">删除</button>
                                 </td>
                             </tr>
                         </table>
@@ -72,7 +72,7 @@
                     <div class="modal-body">
                         <textarea name="" id="" cols="30" rows="30">{{listdata.group[sart.id].content}}</textarea>
                         <select name="" id="" class="form-control" ng-model="newpappertype">
-                            <option value="" ng-repeat="item in selectlist">{{item}}</option>
+                            <option value={{item}} ng-repeat="item in selectlist">{{item}}</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
-                        <button type="button" class="btn btn-primary" ng-click="del()">是</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="del()">是</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

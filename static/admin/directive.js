@@ -1,11 +1,23 @@
-myadmin.directive("newarticle",["md",function(md){
+myadmin.directive("newarticle",[function(md){
     return{
         restrict:"A",
         link:function(scope,element,attr){
             element.click(function(){
                 if(element.text()=="新文章"){
-                    angular.element("#modify-article").modal();
-                    md.init();
+                    location.href="write";
+                }
+            })
+        }
+    }
+}])
+
+write.directive("newarticle",[function(md){
+    return{
+        restrict:"A",
+        link:function(scope,element,attr){
+            element.click(function(){
+                if(element.text()=="文章管理"){
+                    location.href="admin";
                 }
             })
         }

@@ -47,6 +47,28 @@ myadmin.service("deleteData",["$http","$q",function($http,$q){
     }
 }])
 
+myadmin.service("updateData",["$http","$q",function($http,$q){
+    this.check=false;
+    var that=this;
+    this.update=function(id,content,type) {
+        var deffer=$q.defer();
+        $http({
+            url:"update",
+            method:"POST",
+            data:{
+                "id":id,
+                "content":content,
+                "type":type
+            }
+        }).success(function(data){
+            console.log(data);
+            that.check=true;
+            deffer.resolve(data);
+        })
+        that.promise=deffer.promise;
+    }
+}])
+
 
 myadmin.service("md",[function(){
     this.editor=new Editor();
@@ -61,4 +83,67 @@ myadmin.service("md",[function(){
 
 myadmin.service("sArticle",[function(){
     this.id=0;
+}])
+
+
+// write-service
+write.service("md",[function(){
+    this.editor=new Editor();
+    var that=this;
+    this.init=function(){
+        that.editor.render();
+    }
+    this.getval=function(){
+        return that.editor.codemirror.getValue();
+    }
+}])
+
+write.service("create",["$http","$q",function($http,$q){
+    this.check=false;
+    var that=this;
+    this.create=function(content,type,title,description,date){
+        var deffer=$q.defer();
+        $http({
+            url:"create",
+            method:"POST",
+            data:{
+                "title":title,
+                "content":content,
+                "description":description,
+                "type":type,
+                "date":date
+            }
+        }).success(function(data) {
+            that.check=true;
+            deffer.resolve(data);
+        })
+        that.promise=deffer.promise;
+    }
+}])
+
+write.service("initdate",[function(){
+    this.date="";
+    var that=this;
+    this.init=function(){
+        var mydate=new Date();
+        
+        var year=mydate.getFullYear();
+        var month=mydate.getMonth();
+        var day=mydate.getDate();
+        
+        that.date+=year+"-";
+        
+        if(month<9){
+            month++;
+            that.date+="0"+month+"-";
+        }else{
+            that.date+=month+"-";
+        }
+        
+        if(day<10){
+            that.date+="0"+day;
+        }else{
+            that.date+=day;
+        }
+    }
 }])

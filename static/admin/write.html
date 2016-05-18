@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JeLewine</title>
+    <link rel="stylesheet" href="./static/assets/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./static/admin/mstyle.less" type="text/less">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index">JeLewine</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="home"><a href="home">首页</a></li>
+                    <li class="code"><a href="code">编程</a></li>
+                    <li class="talk"><a href="talk">杂谈</a></li>
+                    <li class="translate"><a href="translate">翻译</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="content container" ng-app="write" >
+        <div class="container main-write" ng-controller="writectrl">
+            <div class="col-xs-3 list-group">
+                <a href="#" class="list-group-item" ng-repeat="listname in list" ng-click="" newarticle>{{listname}}</a>
+            </div>
+            <div class="col-xs-9">
+                <p>标题</p>
+                <input type="text" class="form-control title" ng-model="title">
+                <p>描述</p>
+                <input type="text" class="form-control description" ng-model="description">
+                <p>正文</p>
+                <textarea name="" id="" cols="30" rows="30" ng-click="init()"></textarea>
+                <select name="" id="" class="form-control" ng-model="newpappertype" >
+                    <option value={{item}} ng-repeat="item in selectlist">{{item}}</option>
+                </select>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <script src="./static/assets/jquery.js"></script>
+    <script src="./static/assets/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="./static/assets/less.js"></script>
+    <script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>
+    <script src="//cdn.jsdelivr.net/editor/0.1.0/marked.js"></script>
+    
+    <script src="./static/admin/main-m.js"></script>
+    <script src="./static/admin/service.js"></script>
+    <script src="./static/admin/directive.js"></script>
+    <script src="./static/admin/controller.js"></script>
+</body>
+</html>

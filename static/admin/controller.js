@@ -7,18 +7,19 @@ myadmin.controller("adminctrl",["$scope","md","sArticle","queryall",function($sc
     // })
     
     queryall.getdata();
-    queryall.promise.then(function(data){
-        $scope.listdata=queryall.group;
-    })
+    // queryall.promise.then(function(data){
+    //     $scope.listdata=queryall;
+    // })
+    $scope.listdata=queryall;
     
-    $scope.selectArticle=function(index){
+    $scope.selectArticle=function(item){
         md.init();
-        sArticle.id=index;
+        sArticle.id=item.id;
     }
     
 }])
 
-myadmin.controller("modifyctrl",["$scope","queryall","md","sArticle",function($scope,queryall,md,sArticle){
+myadmin.controller("modifyctrl",["$scope","queryall","updateData","md","sArticle",function($scope,queryall,updateData,md,sArticle){
     $scope.sart=sArticle;
     $scope.listdata=queryall;
     $scope.selectlist=["编程","杂谈","翻译"];
@@ -30,8 +31,13 @@ myadmin.controller("modifyctrl",["$scope","queryall","md","sArticle",function($s
     }
     
     $scope.cons=function() {
-        console.log($scope.artval);
-        console.log($scope.listdata.group[$scope.sart.id].content)
+        $scope.postval();
+        updateData.update($scope.sart.id,$scope.newpapperval,$scope.newpappertype);
+        updateData.promise.then(function(data) {
+            if(updateData.check){
+                queryall.getdata();
+            }
+        })
     }
 }])
 
@@ -39,5 +45,36 @@ myadmin.controller("delctrl",["$scope","sArticle","queryall","deleteData",functi
     
     $scope.del=function(){
         deleteData.del(sArticle.id);
+        deleteData.promise.then(function(data){
+            if(deleteData.check){
+                queryall.getdata();
+            }
+        })
+    }
+}])
+
+//writectrl
+write.controller("writectrl",["$scope","md","create","initdate",function($scope,md,create,initdate){
+    $scope.list=["文章管理","新文章"];
+    $scope.citem="文章管理";
+    
+    
+    $scope.selectlist=["编程","杂谈","翻译"];    
+    $scope.type="编程";
+    
+    $scope.init=function(){
+        md.init();
+    }
+    
+    $scope.save=function() {
+        var val=md.getval();
+        initdate.init();
+        
+        create.create(val,$scope.type,$scope.title,$scope.description,$scope.date);
+        create.promise.then(function(data) {
+            if(create.check){
+                location.href="";
+            }
+        })
     }
 }])
