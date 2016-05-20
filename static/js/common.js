@@ -31,7 +31,7 @@ function CreateArticle(articleData){
 function getArticle(){
     var articleList;
     $.ajax({
-        url:"../test.json",
+        url:"getArticlesList",
         async:false,
         success:function(data){
             articleList= data;
