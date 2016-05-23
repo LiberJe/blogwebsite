@@ -33,7 +33,7 @@ function CreateLatestArticle(){
 }
 
 function togglenav(){
-    $(".bg-img").click(function(){
+    $("body").click(function(){
         $("nav").fadeOut(500);
     })
     $(document).on("mousewheel DOMMouseScroll", function (e) {

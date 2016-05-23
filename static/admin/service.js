@@ -19,6 +19,14 @@ myadmin.service("queryall",["$http","$q",function($http,$q){
         var deffer=$q.defer();
         $http.get("getArticlesList").success(function(data){
             console.log(data);
+            
+            // for(var i=0;i<data.length;i++){
+            //     if(!data[i].date){
+            //         var post=data[i].date.indexOf("T");
+            //         var date=data[i].date.substring(0,post);
+            //         data[i].date=date;
+            //     }
+            // }
             that.group=data;
             deffer.resolve(data);
         })
@@ -50,13 +58,15 @@ myadmin.service("deleteData",["$http","$q",function($http,$q){
 myadmin.service("updateData",["$http","$q",function($http,$q){
     this.check=false;
     var that=this;
-    this.update=function(id,content,type) {
+    this.update=function(id,title,content,type) {
         var deffer=$q.defer();
+        console.log("connecting")
         $http({
             url:"update",
             method:"POST",
             data:{
                 "id":id,
+                "title":title,
                 "content":content,
                 "type":type
             }
