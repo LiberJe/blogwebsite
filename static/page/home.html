@@ -5,6 +5,7 @@
     <title>JeLewine</title>
     <link rel="stylesheet" href="./static/assets/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./static/css/home.less" type="text/less">
+    <link rel="stylesheet" href="./static/css/timeline.css">
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -29,35 +30,86 @@
     
     <div class="content">
         <div class="container">
-            <div class="col-md-8 panel-box0">
+            <div class="col-lg-8 col-sm-8 panel-box0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div id="myCarousel" class="carousel slide">
-                            <!-- 轮播（Carousel）项目 -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    123
+                    <div class="panel-chart">
+                        <div class="techtree-box">
+                            <canvas class="text-center" id="techtree-cvs" width="350px" height="350px"></canvas>
+                        </div>
+                        
+                        <div class="project-box">
+                            <div class="panel-body">
+                                <div class="text-center mbot30">
+                                    <h3 class="timeline-title">Timeline</h3>
+                                    <p class="t-info">This is a project timeline</p>
                                 </div>
-                                <div class="item">
-                                    456
+
+                                <div class="timeline">
+                                    <article class="timeline-item">
+                                        <div class="timeline-desk">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <span class="arrow"></span>
+                                                    <span class="timeline-icon red"></span>
+                                                    <span class="timeline-date">08:25 am</span>
+                                                    <h1 class="red">12 July | Sunday</h1>
+                                                    <p>Lorem ipsum dolor sit amet consiquest dio</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-item alt">
+                                        <div class="timeline-desk">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <span class="arrow-alt"></span>
+                                                    <span class="timeline-icon green"></span>
+                                                    <span class="timeline-date">10:00 am</span>
+                                                    <h1 class="green">10 July | Wednesday</h1>
+                                                    <p><a href="#">Jonathan Smith</a> added new milestone <span><a href="#" class="green">ERP</a></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-item">
+                                        <div class="timeline-desk">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <span class="arrow"></span>
+                                                    <span class="timeline-icon red"></span>
+                                                    <span class="timeline-date">08:25 am</span>
+                                                    <h1 class="red">12 July | Sunday</h1>
+                                                    <p>Lorem ipsum dolor sit amet consiquest dio</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
                                 </div>
-                                <div class="item">
-                                    789
-                                </div>
+
+                                <div class="clearfix">&nbsp;</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-md-4 text-center">技能树</div>
-                        <div class="col-md-4 text-center">项目经历</div>
-                        <div class="col-md-4 text-center">联系我</div>
+                        
                     </div>
                     
+                    <div class="panel-body">
+                        <ul class="intro-list">
+                            <li class="col-xs-6 text-center" id="techtree">
+                                <p class="glyphicon glyphicon-book"></p>
+                                <p>技能树</p>
+                            </li>
+                            <li class="col-xs-6 text-center" id="project">
+                                <p class="glyphicon glyphicon-briefcase"></p>
+                                <p>项目经历</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 panel-box1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-4 panel-box1">
+                <div class="panel panel-default col-xs-12 pb11">
+                    <div class="panel-body front">
                         <div class="me-txt">
                             <p class="text-center"><b>面对现实，忠于理想</b></p>
                             <hr>
@@ -65,21 +117,29 @@
                         <div class="me-img">
                             <img src="./static/img/head2.jpg" alt="" width="140px" height="140px">
                         </div>
+                        <p class="text-center">JeLewine</p>
                     </div>
+                    
+                    <div class="panel-body back">
+                        
+                    </div>
+                </div>
+                
+                <div class="panel panel-default col-xs-12 pb12">
                     <div class="panel-body">
                         <div class="mess-list">
                             <ul class="list-inline">
                                 <li>
-                                    <img class="media-object" src="./static/img/message.png" alt="" width="20px" height="20px">
+                                    <img class="media-object" src="./static/img/message.png" alt="" width="30px" height="30px">
                                 </li>
                                 <li>
-                                    <img class="media-object" src="./static/img/weibo1.png" alt="" width="20px" height="20px">
+                                    <img class="media-object" src="./static/img/weibo1.png" alt="" width="30px" height="30px">
                                 </li>
                                 <li>
-                                    <img class="media-object" src="./static/img/wechat1.png" alt="" width="20px" height="20px">
+                                    <img class="media-object" src="./static/img/wechat1.png" alt="" width="30px" height="30px">
                                 </li>
                                 <li>
-                                    <img class="media-object" src="./static/img/github2.png" alt="" width="20px" height="20px">
+                                    <img class="media-object" src="./static/img/github2.png" alt="" width="30px" height="30px">
                                 </li>
                             </ul>
                         </div>
@@ -100,7 +160,9 @@
     <script src="./static/assets/jquery.js"></script>
     <script src="./static/assets/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./static/assets/less.js"></script>
+    <script src="./static/assets/chart/Chart.js"></script>
     <script src="./static/js/common.js"></script>
     <script src="./static/js/home.js"></script>
 </body>
 </html>
+
