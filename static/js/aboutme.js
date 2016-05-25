@@ -1,8 +1,15 @@
 $(document).ready(function(){
     var la=new CreateLatestArticle();
     
+    //初始化弹窗
+    $('[data-toggle="popover"]').popover({
+        html:true
+    })
+    
+    //轮播窗口
     changeCarousel();
     
+    //初始化技能树
     drawTechtree();
     
     // togglenav();
