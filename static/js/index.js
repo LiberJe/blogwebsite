@@ -2,8 +2,11 @@ $(document).ready(function(){
     //fullpage
     // $("#fullpage").fullpage();
     
+    //创建最新文章
     var latestPapper=new CreateLatestPapper();
     
+    //创建其他文章
+    querydata(3,createOtherPapper);
 })
 
 
@@ -43,6 +46,11 @@ function CreateLatestPapper(){
     }
 }
 
-function CreateRollPapper(){
-    
+function createOtherPapper(data){
+    console.log(data);
+    $.each(data,function(index,cdata){
+        console.log(index);
+        $("<li class='list-group-item roll-papper-head'><a href='papper?id="+cdata.id+"'>"+cdata.title+"</a></li>").appendTo($(".otherpapper"));
+        
+    })
 }
