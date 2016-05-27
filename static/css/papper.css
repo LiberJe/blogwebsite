@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+a:focus{
+    outline: none;
+}
+a:link{
+    text-decoration: none;
+}
+
+
+.content{
+    margin-top: 80px;
+}
