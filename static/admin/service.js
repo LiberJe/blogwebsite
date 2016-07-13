@@ -111,7 +111,7 @@ write.service("md",[function(){
 write.service("create",["$http","$q",function($http,$q){
     this.check=false;
     var that=this;
-    this.create=function(content,type,title,description,date){
+    this.create=function(content,title,date){
         var deffer=$q.defer();
         $http({
             url:"create",
@@ -119,8 +119,6 @@ write.service("create",["$http","$q",function($http,$q){
             data:{
                 "title":title,
                 "content":content,
-                "description":description,
-                "type":type,
                 "date":date
             }
         }).success(function(data) {

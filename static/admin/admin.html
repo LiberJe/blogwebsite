@@ -16,10 +16,9 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="home"><a href="home">首页</a></li>
-                    <li class="code"><a href="code">编程</a></li>
-                    <li class="talk"><a href="talk">杂谈</a></li>
-                    <li class="translate"><a href="translate">翻译</a></li>
+                    <li class="index"><a href="index">首页</a></li>
+                    <li class="archive"><a href="archive">归档</a></li>
+                    <li class="aboutme"><a href="aboutme">关于我</a></li>
                 </ul>
             </div>
         </div>
@@ -39,16 +38,12 @@
                                 <th>id</th>
                                 <th>title</th>
                                 <th>date</th>
-                                <th>description</th>
-                                <th>type</th>
                                 <th>action</th>
                             </tr>
                             <tr ng-repeat="item in listdata.group">
                                 <td>{{item.id}}</td>
                                 <td>{{item.title}}</td>
                                 <td>{{item.date}}</td>
-                                <td>{{item.description}}</td>
-                                <td>{{item.type}}</td>
                                 <td>
                                     <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modify-article" ng-click="selectArticle(item)">修改</button>
                                     <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-article" ng-click="selectArticle(item)">删除</button>
@@ -73,9 +68,6 @@
                         <p>标题</p>
                         <input type="text" class="form-control" value={{sart.title}}>
                         <textarea name="" id="" cols="30" rows="30">{{listdata.group[sart.id].content}}</textarea>
-                        <select name="" id="" class="form-control" ng-model="sart.type">
-                            <option value={{item}} ng-repeat="item in selectlist">{{item}}</option>
-                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

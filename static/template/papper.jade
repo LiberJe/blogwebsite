@@ -17,31 +17,16 @@ body
                 ul.nav.navbar-nav
                     li.index
                         a(href="index") 首页
-                    li.code
-                        a(href="code") 编程
-                    li.talk
-                        a(href="talk") 杂谈
-                    li.translate
-                        a(href="translate") 翻译
+                    li.archive
+                        a(href="archive") 归档
                     li.aboutme
                         a(href="aboutme") 关于我
     div.content.container
-        div.panel.panel-default.col-sm-8.col-xs-12.indexpapper
-            div.panel-body
-                div.page-header
-                    h1 #{title}
-                    ol.breadcrumb
-                        li art1
-                        li art2
-                p #{description}
-                hr
-                div.page-con
-                    p #{content}
-        div.col-sm-1.hidden-xs
-        ul.list-group.col-sm-3.hidden-xs.otherpapper
-            li.list-group-item.other-papper-head 其他文章
-            li.list-group-item.other-papper
-                a(href="papper?id="+0) art0
+        h2 #{title}
+        hr
+        p !{content}
+        hr
+        p.date #{date}
             
     script(src="./static/assets/jquery.js")
     script(src="./static/assets/bootstrap/dist/js/bootstrap.js")
