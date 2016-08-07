@@ -3,7 +3,9 @@ head
     title #{title}
     meta(charset="UTF-8")
     link(rel="stylesheet",href="./static/assets/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet",href="./static/assets/toastr-master/build/toastr.min.css")
     link(rel="stylesheet",href="./static/css/papper.css")
+    link(rel="shortcut icon",href="./static/img/head1.jpg")
 body
     nav(class="navbar navbar-default navbar-fixed-top")
         div(class="container")
@@ -27,8 +29,26 @@ body
         p !{content}
         hr
         p.date #{date}
+    div.comment.container
+        div.comment-list
+        div.comment-write
+            hr
+            div.form-group
+                label 您的大名:
+                input.form-control#cname
+            div.form-group
+                label 您的邮箱:
+                input.form-control#cemail
+            div.form-group
+                label 您的评论:
+                textarea.form-control#ccomment
+            button.btn.btn-default.publish 发表
+    div.foot
+        hr
+        p.text-center JeLewine
             
-    script(src="./static/assets/jquery.js")
-    script(src="./static/assets/bootstrap/dist/js/bootstrap.js")
+    script(src="//cdn.bootcss.com/jquery/1.12.0/jquery.min.js")
+    script(src="./static/assets/bootstrap/dist/js/bootstrap.min.js")
+    script(src="./static/assets/toastr-master/build/toastr.min.js")
     script(src="./static/js/common.js")
     script(src="./static/js/papper.js")

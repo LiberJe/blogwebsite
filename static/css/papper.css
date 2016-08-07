@@ -7,7 +7,7 @@ a{
     text-decoration: none;
 }
 a:hover{
-    color: white;
+    /*color: white;*/
     text-decoration: none;
 }
 a:focus{
@@ -27,5 +27,16 @@ p{
 }
 .date{
     height: 20px;
+    color: #999999;
+}
+h6{
+    margin: 0;
+}
+
+textarea{
+    resize: none;
+}
+
+.foot{
     color: #999999;
 }
