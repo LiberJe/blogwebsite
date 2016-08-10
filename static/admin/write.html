@@ -37,6 +37,8 @@
             <div class="col-xs-9">
                 <p>标题</p>
                 <input type="text" class="form-control title" ng-model="title">
+                <p>日期</p>
+                <input type="text" class="form-control date" ng-model="date">
                 <p>正文</p>
                 <textarea name="" id="" cols="30" rows="30" ng-click="init()"></textarea>
                 <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
@@ -52,6 +54,7 @@
     
     <script src="//cdn.bootcss.com/jquery/1.12.0/jquery.js"></script>
     <script src="./static/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./static/assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
     <script src="//cdn.bootcss.com/less.js/2.5.0/less.min.js"></script>
     <script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>

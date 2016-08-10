@@ -1,5 +1,5 @@
 myadmin.controller("adminctrl",["$scope","md","sArticle","queryall",function($scope,md,sArticle,queryall){
-    $scope.list=["文章管理","新文章"];
+    $scope.list=["文章管理","新文章","留言"];
     $scope.citem="文章管理";
     
     // listdata.promise.then(function(data){
@@ -57,7 +57,7 @@ myadmin.controller("delctrl",["$scope","sArticle","queryall","deleteData",functi
 
 //writectrl
 write.controller("writectrl",["$scope","md","create","initdate",function($scope,md,create,initdate){
-    $scope.list=["文章管理","新文章"];
+    $scope.list=["文章管理","新文章","留言"];
     $scope.citem="文章管理";
     
     
@@ -70,9 +70,16 @@ write.controller("writectrl",["$scope","md","create","initdate",function($scope,
     
     $scope.save=function() {
         var val=md.getval();
-        initdate.init();
+        var date="";
+        if(!$scope.date){
+            initdate.init();
+            date=initdate.date;
+        }else{
+            date=$scope.date;
+        }
         
-        create.create(val,$scope.title,initdate.date);
+
+        create.create(val,$scope.title,date);
         create.promise.then(function(data) {
             console.log(data);
             if(create.check){
