@@ -1,5 +1,5 @@
 var myadmin=angular.module("myadmin",[]);
-var write=angular.module("write",[]);
+
 
 //md-editor
 // var editor=new Editor();

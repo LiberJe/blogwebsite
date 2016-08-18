@@ -5,10 +5,10 @@
     <title>JeLewine</title>
     <link rel="stylesheet" href="./static/assets/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./static/admin/mstyle.less" type="text/less">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
+    <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">-->
     <link rel="shortcut icon" href="./static/img/head1.jpg" /> 
 </head>
-<body>
+<body ng-app="myadmin">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -29,12 +29,13 @@
         </div>
     </nav>
     
-    <div class="content container" ng-app="myadmin" >
-        <div class="container main-admin" ng-controller="adminctrl">
+    <div class="content container" >
+        <div class="container main-admin" ng-controller="ctrl" >
             <div class="col-xs-3 list-group">
-                <a href="#" class="list-group-item" ng-repeat="listname in list" ng-click="" newarticle>{{listname}}</a>
+                <a href="#" class="list-group-item" ng-repeat="listname in list" ng-click="" state>{{listname}}</a>
             </div>
-            <div class="col-xs-9">
+
+            <div class="col-xs-9" ng-show="state.admin" ng-controller="adminctrl">
                 <div class="panel panel-default" >
                     <div class="panel-heading">{{citem}}</div>
                     <div class="panel-body" >
@@ -59,6 +60,20 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xs-9 main-write" ng-show="state.newArticle" ng-controller="writectrl">
+                <p>标题</p>
+                <input type="text" class="form-control title" ng-model="title">
+                <p>日期</p>
+                <input type="text" class="form-control date" ng-model="date">
+                <p>正文</p>
+                <div class="btn-group btn-ctrl">
+                    <button class="btn btn-sm btn-default">预览</button>
+                    <button class="btn btn-sm btn-default">清除</button>
+                </div>
+                <textarea name="" id="" cols="30" rows="30" class="form-control" ng-model="content"></textarea>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
         </div>
         
         <!--修改modal-->
@@ -70,9 +85,12 @@
                         <h4 class="modal-title">修改文章</h4>
                     </div>
                     <div class="modal-body">
-                        <p>标题</p>
-                        <input type="text" class="form-control" value={{sart.title}}>
-                        <textarea name="" id="" cols="30" rows="30">{{listdata.group[sart.id].content}}</textarea>
+                        <h4>标题</h4>
+                        <input type="text" class="form-control" ng-model="sart.title">
+                        <h4>日期</h4>
+                        <input type="text" class="form-control" ng-model="sart.date">
+                        <h4>正文</h4>
+                        <textarea name="" id="" cols="30" rows="30" class="form-control" ng-model="sart.content"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -102,6 +120,7 @@
         </div><!-- /.modal -->
         
     </div>
+
     
     
     
@@ -113,7 +132,7 @@
     <script src="./static/assets/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
     <script src="//cdn.bootcss.com/less.js/2.5.0/less.min.js"></script>
-    <script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>
+    <!--<script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>-->
     <script src="//cdn.jsdelivr.net/editor/0.1.0/marked.js"></script>
     
     <script src="./static/admin/main-m.js"></script>

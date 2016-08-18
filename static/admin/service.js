@@ -1,3 +1,9 @@
+myadmin.service("showState",[function(){
+    this.admin=true;
+    this.newArticle=false;
+    this.message=false;
+}])
+
 myadmin.service("listdata",["$http","$q",function($http,$q){
     this.group=[];
     var that=this;
@@ -58,7 +64,7 @@ myadmin.service("deleteData",["$http","$q",function($http,$q){
 myadmin.service("updateData",["$http","$q",function($http,$q){
     this.check=false;
     var that=this;
-    this.update=function(id,title,content,type) {
+    this.update=function(id,title,date,content) {
         var deffer=$q.defer();
         console.log("connecting")
         $http({
@@ -67,12 +73,17 @@ myadmin.service("updateData",["$http","$q",function($http,$q){
             data:{
                 "id":id,
                 "title":title,
-                "content":content,
-                "type":type
+                "date":date,
+                "content":content
             }
         }).success(function(data){
             console.log(data);
-            that.check=true;
+            if(data.check){
+                that.check=true;
+            }else{
+                that.check=false;
+            }
+            
             deffer.resolve(data);
         })
         that.promise=deffer.promise;
@@ -80,35 +91,22 @@ myadmin.service("updateData",["$http","$q",function($http,$q){
 }])
 
 
-myadmin.service("md",[function(){
-    this.editor=new Editor();
-    var that=this;
-    this.init=function(){
-        that.editor.render();
-    }
-    this.getval=function(){
-        return that.editor.codemirror.getValue();
-    }
-}])
 
 myadmin.service("sArticle",[function(){
     this.id=0;
+    this.title="";
+    this.date="";
+    this.content="";
 }])
 
+myadmin.service("catalog",[function(){
+    this.list=["文章管理","新文章","留言"];
+}])
 
 // write-service
-write.service("md",[function(){
-    this.editor=new Editor();
-    var that=this;
-    this.init=function(){
-        that.editor.render();
-    }
-    this.getval=function(){
-        return that.editor.codemirror.getValue();
-    }
-}])
 
-write.service("create",["$http","$q",function($http,$q){
+
+myadmin.service("create",["$http","$q",function($http,$q){
     this.check=false;
     var that=this;
     this.create=function(content,title,date){
@@ -129,7 +127,7 @@ write.service("create",["$http","$q",function($http,$q){
     }
 }])
 
-write.service("initdate",[function(){
+myadmin.service("initdate",[function(){
     this.date="";
     var that=this;
     this.init=function(){

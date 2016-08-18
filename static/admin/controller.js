@@ -1,5 +1,10 @@
-myadmin.controller("adminctrl",["$scope","md","sArticle","queryall",function($scope,md,sArticle,queryall){
-    $scope.list=["文章管理","新文章","留言"];
+myadmin.controller("ctrl",["$scope","catalog","showState",function($scope,catalog,showState){
+    $scope.list=catalog.list;
+    $scope.state=showState;
+
+}])
+
+myadmin.controller("adminctrl",["$scope","sArticle","queryall","catalog",function($scope,sArticle,queryall,catalog){
     $scope.citem="文章管理";
     
     // listdata.promise.then(function(data){
@@ -13,30 +18,26 @@ myadmin.controller("adminctrl",["$scope","md","sArticle","queryall",function($sc
     $scope.listdata=queryall;
     
     $scope.selectArticle=function(item){
-        md.init();
         console.log(item)
         sArticle.id=item.id;
+        sArticle.date=item.date;
         sArticle.title=item.title;
         sArticle.content=item.content;
-        
     }
     
 }])
 
-myadmin.controller("modifyctrl",["$scope","queryall","updateData","md","sArticle",function($scope,queryall,updateData,md,sArticle){
+myadmin.controller("modifyctrl",["$scope","queryall","updateData","sArticle",function($scope,queryall,updateData,sArticle){
     $scope.sart=sArticle;
-    $scope.listdata=queryall;
-    
-    $scope.postval=function(){
-        $scope.newpapperval=md.getval();
-    }
-    
+
     $scope.cons=function() {
-        $scope.postval();
-        updateData.update($scope.sart.id,$scope.sart.title,$scope.newpapperval);
+        updateData.update($scope.sart.id,$scope.sart.title,$scope.sart.date,$scope.sart.content);
         updateData.promise.then(function(data) {
             if(updateData.check){
                 queryall.getdata();
+                alert("修改成功");
+            }else{
+                alert("修改失败")
             }
         })
     }
@@ -47,29 +48,21 @@ myadmin.controller("delctrl",["$scope","sArticle","queryall","deleteData",functi
     $scope.del=function(){
         deleteData.del(sArticle.id);
         deleteData.promise.then(function(data){
-            console.log(data);
             if(deleteData.check){
                 queryall.getdata();
+                alert("删除成功");
+            }else{
+                alert("删除失败");
             }
         })
     }
 }])
 
 //writectrl
-write.controller("writectrl",["$scope","md","create","initdate",function($scope,md,create,initdate){
-    $scope.list=["文章管理","新文章","留言"];
-    $scope.citem="文章管理";
-    
-    
-    $scope.selectlist=["编程","杂谈","翻译"];    
-    $scope.type="编程";
-    
-    $scope.init=function(){
-        md.init();
-    }
+myadmin.controller("writectrl",["$scope","create","initdate",function($scope,create,initdate){
     
     $scope.save=function() {
-        var val=md.getval();
+        
         var date="";
         if(!$scope.date){
             initdate.init();
@@ -79,7 +72,7 @@ write.controller("writectrl",["$scope","md","create","initdate",function($scope,
         }
         
 
-        create.create(val,$scope.title,date);
+        create.create($scope.content,$scope.title,date);
         create.promise.then(function(data) {
             console.log(data);
             if(create.check){
